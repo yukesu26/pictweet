@@ -5,6 +5,8 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
   has_many :tweets
   has_many :comments  # commentsテーブルとのアソシエーション
-
+  # imageも空で投稿できないように追記
+  validates :text, :image, presence: true
   validates :nickname, presence: true, length: { maximum: 6 }
+
 end
